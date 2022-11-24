@@ -17,7 +17,7 @@ const useMeeting = () => {
     const isOnGoingMeeting = (meeting = []) => {
         const { date: meetingDate, endTime, startTime } = meeting[0]
         const currentDate = new Date().toLocaleDateString()
-        return (!(datesAreSame({ meetingDate, currentDate }) && hrIsSame({ endTime, startTime })))
+        return ((datesAreSame({ meetingDate, currentDate }) && hrIsSame({ endTime, startTime })))
     }
 
 

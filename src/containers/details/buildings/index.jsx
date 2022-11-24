@@ -1,12 +1,12 @@
 
 import { Avatar, List, Typography } from 'antd';
 import useMeeting from '../useMeeting'
-import style from './style.css'
 import { status } from '../../../constants'
+import './style'
 
 const Buildings = ({ data }) => {
     const { getOngoingMeetings, isOnGoingMeeting } = useMeeting()
-    const { Title } = Typography;
+    const { Title, Text } = Typography;
 
     const getMeetingStatus = (room) => {
         if (room && isOnGoingMeeting(room.meetings)) {
@@ -34,7 +34,7 @@ const Buildings = ({ data }) => {
             {/* Number of buildings */}
             {
                 data?.length &&
-                <Title level={5}>Total Buildings - {data?.length}</Title>
+                <Title level={4}>Total Buildings - {data?.length}</Title>
             }
 
             {/* Meeting rooms details */}
@@ -42,11 +42,13 @@ const Buildings = ({ data }) => {
                 data.map((item, id) => {
                     return (
                         <div key={`room${id}`}>
-                            <Title level={4}>{item.name}</Title>
+                            <Title level={5}>{item.name}</Title>
                             {item.meetingRooms.length ?
-                                <Title level={5}>
+                                <Text type="secondary">
                                     There are {item.meetingRooms.length} meeting rooms in this building
-                                </Title> : null}
+                                </Text> : <Text type="secondary">
+                                    There are no rooms here
+                                </Text>}
 
                             {item.meetingRooms.length ?
                                 <List

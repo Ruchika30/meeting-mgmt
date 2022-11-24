@@ -1,17 +1,16 @@
 import useGetRoomDetials from './useGetRoomDetails'
 import { useNavigate } from 'react-router-dom';
 import BuildingsComponent from './buildings'
-import { Avatar, Card, Skeleton, Switch } from 'antd';
-
-import style from './style'
+import { Card, Button, Typography } from 'antd';
+import style from '../style'
 
 const RoomDetails = () => {
-    const { parent, root } = style
+    const { Title } = Typography;
+    const { card, root, wrapper } = style
 
     const navigate = useNavigate()
     const { data, loading, error } = useGetRoomDetials()
     const { Buildings: buildings } = data
-    console.log("buildings--", buildings);
 
     const getRooms = () => {
         return buildings?.reduce((a, b) => {
@@ -21,17 +20,9 @@ const RoomDetails = () => {
 
 
     const addMeeting = () => {
-        navigate('/add')
+        navigate('/add', { state: { buildings } })
     }
 
-    // if (loading) {
-    //     // return <h1>Loading ....</h1>
-    //     return (
-    //         <Card style={{ width: 300, marginTop: 16 }} loading={loading} >
-
-    //         </Card >
-    //     )
-    // }
 
     if (error) {
         return <h1>Has error ....</h1>
@@ -42,19 +33,22 @@ const RoomDetails = () => {
     return (
         <>
             <div style={root}>
-                <Card style={parent} loading={loading}>
-                    <BuildingsComponent data={buildings} />
+                <div style={wrapper}>
+                    <Title level={2}>Meeting managment system</Title>
+                    <Card style={card} loading={loading}>
+                        <BuildingsComponent data={buildings} />
+
+                        {/* Number of rooms */}
+                        {/* {Boolean(getRooms()) && <div>Rooms: {getRooms()}</div>} */}
 
 
-                    {/* Number of rooms */}
-                    {Boolean(getRooms()) && <div>Rooms: {getRooms()}</div>}
-
-
-                    {/* Ongoing meetings */}
-                    {/* <div>Ongoing meetings - {getOngoingMeetings(buildings)}</div> */}
-
-                    <button onClick={addMeeting}>Add meeting</button>
-                </Card>
+                        {/* Ongoing meetings */}
+                        {/* <div>Ongoing meetings - {getOngoingMeetings(buildings)}</div> */}
+                        <div style={{ marginTop: '10px' }}>
+                            <Button block type="primary" onClick={addMeeting}>Add meeting</Button>
+                        </div>
+                    </Card>
+                </div>
             </div>
         </>
     )
