@@ -1,0 +1,35 @@
+{
+  "name": "meeting-mgmt-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^3.7.1",
+    "@babel/core": "^7.20.2",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "antd": "^5.0.1",
+    "babel-loader": "^9.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^6.7.2",
+    "graphql": "^16.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-server": "^0.1.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.0.0"
+  }
+}
