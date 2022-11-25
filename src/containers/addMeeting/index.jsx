@@ -103,7 +103,6 @@ const Addmeeting = () => {
         <div style={root}>
             <div style={wrapper}>
                 <Title level={3}>Add Meeting</Title>
-
                 <Card style={card}>
 
                     <Form
