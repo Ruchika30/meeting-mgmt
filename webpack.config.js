@@ -4,6 +4,9 @@ const path = require('path');
 module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, 'src/index.js'),
+    devServer: {
+        static: './dist',
+    },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],
         modules: ['./src', 'node_modules'] // Assuming that your files are inside the src dir
@@ -24,7 +27,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './public/index.html'
+            template: './public/index.html',
+            title: 'Output Management',
         })
     ],
 
